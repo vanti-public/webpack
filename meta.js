@@ -6,6 +6,18 @@ module.exports = {
       }
 
       return options.inverse(this);
+    },
+    "semi": function(val, options) {
+      if (val === 'google' || val === 'airbnb') {
+        return options.fn(this);
+      }
+      return options.inverse(this);
+    },
+    "space": function(val, options) {
+      if (val === 'google') {
+        return options.inverse(this);
+      }
+      return options.fn(this);
     }
   },
   "prompts": {
@@ -53,6 +65,11 @@ module.exports = {
       "type": "list",
       "message": "Pick an ESLint preset",
       "choices": [
+        {
+          "name": "Google (https://github.com/google/eslint-config-google)",
+          "value": "google",
+          "short": "Google"
+        },
         {
           "name": "Standard (https://github.com/standard/standard)",
           "value": "standard",
