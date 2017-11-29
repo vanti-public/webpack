@@ -1,8 +1,8 @@
-import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-import Router from 'vue-router'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-import HelloWorld from '@/components/HelloWorld'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import Vue from 'vue'{{#semi lintConfig}};{{/semi}}
+import Router from 'vue-router'{{#semi lintConfig}};{{/semi}}
+import HelloWorld from '@/components/HelloWorld'{{#semi lintConfig}};{{/semi}}
 
-Vue.use(Router){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+Vue.use(Router){{#semi lintConfig}};{{/semi}}
 
 export default new Router({
   routes: [
@@ -12,4 +12,4 @@ export default new Router({
       component: HelloWorld{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
     }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   ]{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-}){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+}){{#semi lintConfig}};{{/semi}}

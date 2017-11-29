@@ -9,6 +9,10 @@ module.exports = {
   env: {
     browser: true,
   },
+  {{#if_eq lintConfig "google"}}
+  // https://github.com/google/eslint-config-google/blob/master/index.js
+  extends: 'google',
+  {{/if_eq}}
   {{#if_eq lintConfig "standard"}}
   // https://github.com/standard/standard/blob/master/docs/RULES-en.md
   extends: 'standard',
@@ -32,6 +36,14 @@ module.exports = {
   {{/if_eq}}
   // add your custom rules here
   'rules': {
+    {{#if_eq lintConfig "google"}}
+    // allow paren-less arrow functions
+    'arrow-parens': 0,
+    // we don't like trailing commas
+    'comma-dangle': ["error", "never"],
+    // we have modern monitors these days
+    'max-len': ["error", 120],
+    {{/if_eq}}
     {{#if_eq lintConfig "standard"}}
     // allow paren-less arrow functions
     'arrow-parens': 0,

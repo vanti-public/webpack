@@ -11,7 +11,7 @@
 
 <script>
 {{#unless router}}
-import HelloWorld from './components/HelloWorld'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import HelloWorld from './components/HelloWorld'{{#semi lintConfig}};{{/semi}}
 
 {{/unless}}
 export default {
@@ -19,7 +19,7 @@ export default {
   components: {
     HelloWorld{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}{{/router}}
-}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+}{{#semi lintConfig}};{{/semi}}
 </script>
 
 <style>
