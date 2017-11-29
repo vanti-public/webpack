@@ -88,7 +88,7 @@ const webpackConfig = merge(baseWebpackConfig, {
           module.resource &&
           /\.js$/.test(module.resource) &&
           path.resolve(__dirname, '..').split(path.sep)
-            .reduce((dirs, folder) => [...dirs, dirs.length === 0 ? folder : path.join(dirs[dirs.length - 1], folder)], [])
+            .reduce((dirs, folder, i) => [...dirs, i === 0 ? folder : path.join(dirs[i - 1], folder)], [])
             .map(d => path.join(d, 'node_modules'))
             .some(dir => module.resource.indexOf(dir) === 0)
         )
