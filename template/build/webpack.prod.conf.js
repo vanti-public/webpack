@@ -83,13 +83,14 @@ const webpackConfig = merge(baseWebpackConfig, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module) {
-        // any required modules inside node_modules are extracted to vendor
+        // any required modules inside node_modules are extracted to vendor (includes parent node_modules)
         return (
           module.resource &&
           /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
-          ) === 0
+          path.resolve(__dirname, '..').split(path.sep)
+            .reduce((dirs, folder) => [...dirs, dirs.length === 0 ? folder : path.join(dirs[dirs.length - 1], folder)], [])
+            .map(d => path.join(d, 'node_modules'))
+            .some(dir => module.resource.indexOf(dir) === 0)
         )
       }
     }),
